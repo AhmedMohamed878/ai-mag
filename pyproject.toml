@@ -1,0 +1,38 @@
+[project]
+name = "ai-mag"
+version = "0.1.0"
+description = "AI Marketing & Operations System"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = []
+
+[project.scripts]
+ai-mag = "ai_mag:main"
+
+[build-system]
+requires = ["uv_build>=0.13.9,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pre-commit>=4.7,<5",
+    "pyright[nodejs]>=1.1.414,<2",
+    "pytest>=9.2,<10",
+    "ruff==0.17.3",
+]
+[tool.pyright]
+typeCheckingMode = "basic"
+pythonVersion = "3.13"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "S"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = ["S101"]
+
+[tool.pytest]
+strict_config = true
+strict_markers = true
+strict_parametrization_ids = true
+strict_xfail = true
+addopts = ["-ra"]
